@@ -9,5 +9,8 @@ namespace Sheenam.API.Brokers.Storages
 
         public async ValueTask<User> InsertUserAsync(User user) =>
             await InsertAsync(user);
+
+        public IQueryable<User> SelectAllUsers() =>
+            SelectAll<User>().AsQueryable();
     }
 }

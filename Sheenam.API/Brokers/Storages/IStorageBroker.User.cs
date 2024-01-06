@@ -5,5 +5,6 @@ namespace Sheenam.API.Brokers.Storages
     public partial interface IStorageBroker
     {
         ValueTask<User> InsertUserAsync(User user);
+        IQueryable<User> SelectAllUsers();
     }
 }

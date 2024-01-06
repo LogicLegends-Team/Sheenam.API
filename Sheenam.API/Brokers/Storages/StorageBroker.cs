@@ -1,6 +1,7 @@
 ﻿using EFxceptions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Sheenam.API.Models.Users;
 
 namespace Sheenam.API.Brokers.Storages
 {
@@ -23,7 +24,6 @@ namespace Sheenam.API.Brokers.Storages
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -50,6 +50,22 @@ namespace Sheenam.API.Brokers.Storages
             await broker.SaveChangesAsync();
 
             return @object;
+        }
+
+        public async ValueTask<T> DeleteAsync<T>(T @object)
+        {
+            try
+            {
+                var broker = new StorageBroker();
+                broker.Entry(@object).State = EntityState.Deleted;
+                await broker.SaveChangesAsync();
+
+                return @object;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

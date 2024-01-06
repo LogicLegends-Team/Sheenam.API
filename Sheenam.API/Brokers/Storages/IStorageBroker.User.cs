@@ -8,5 +8,6 @@ namespace Sheenam.API.Brokers.Storages
         IQueryable<User> SelectAllUsers();
         ValueTask<User> SelectUserByIdAsync(Guid id);
         ValueTask<User> UpdateUserAsync(User user);
+        ValueTask DeleteUserAsync(User user);
     }
 }

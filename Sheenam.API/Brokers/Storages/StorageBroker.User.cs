@@ -12,5 +12,8 @@ namespace Sheenam.API.Brokers.Storages
 
         public IQueryable<User> SelectAllUsers() =>
             SelectAll<User>().AsQueryable();
+
+        public async ValueTask<User> SelectUserByIdAsync(Guid id) =>
+            await SelectAsync<User>(id);
     }
 }

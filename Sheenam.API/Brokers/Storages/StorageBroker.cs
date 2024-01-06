@@ -1,4 +1,5 @@
 ﻿using EFxceptions;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 namespace Sheenam.API.Brokers.Storages
@@ -25,6 +26,13 @@ namespace Sheenam.API.Brokers.Storages
 
                 throw ex;
             }
+        }
+
+        public IQueryable<T> SelectAll<T>() where T : class
+        {
+            var broker = new StorageBroker();
+
+            return broker.Set<T>();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
